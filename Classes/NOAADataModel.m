@@ -43,7 +43,7 @@
 		[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; // 2009-09-26T12:00:00-05:00
 	}
-	
+    
 	return self;
 }
 
@@ -258,7 +258,6 @@
 	ForecastDay *forecastDay = nil;
 	NSString *conditionIcon;
 	NSRange nameRange;
-	int length = 0;
 	
 	for (DDXMLElement *condition in conditions){
 		period = [periods objectAtIndex:i];
@@ -266,17 +265,18 @@
 		day = period.dateComponents.day;
 		
 		conditionIcon = [condition stringValue];
-		length = [conditionIcon length];
-		if (length <= 47 + 4){
+        if ( !([conditionIcon hasPrefix:@"http://"] && [conditionIcon hasSuffix:@".jpg"]) ){
 			[self bubbleUpError:@"NOAADataModelErrorDomain" code:5 errorString:@"Unable to extract daily conditions"];
 			return;
 		}
 		
-		nameRange = NSMakeRange(47, length - 4 - 47);
+        nameRange = [conditionIcon rangeOfString:@"/" options:NSBackwardsSearch];
+        nameRange.location++;
+        nameRange.length = conditionIcon.length - 4 - nameRange.location;
 		DLog(@"%@",conditionIcon);
 		conditionIcon = [conditionIcon substringWithRange:nameRange];
 		DLog(@"%@",conditionIcon);
-		
+        
 		forecastDay = [self.multidayForecast objectAtIndex:j];
 		if (forecastDay.day != day){
 			j++;

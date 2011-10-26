@@ -53,7 +53,7 @@
 	DDXMLDocument *xmlDoc = [[DDXMLDocument alloc] initWithData:self.receivedData options:0 error:&error];
 	if (error){
 		[xmlDoc release];
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:0 errorString:@"There appears to be a problem getting data from NOAA right now"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:0 errorString:@"There appears to be a problem getting hourly data from NOAA right now"];
 		//[self handleError:error];
 		return;
 	}
@@ -62,7 +62,7 @@
 	NSArray *elements = [rootElement elementsForName:@"data"];
 	if ([elements count] == 0){
 		[xmlDoc release];
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:1 errorString:@"Unable to extract NOAA data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:1 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	DDXMLElement *dataElement = [elements objectAtIndex:0];
@@ -71,7 +71,7 @@
 	elements = [dataElement elementsForName:@"parameters"];
 	if ([elements count] == 0){
 		[xmlDoc release];
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:1 errorString:@"Unable to extract NOAA data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:1 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	DDXMLElement *parametersElement = [elements objectAtIndex:0];
@@ -88,7 +88,7 @@
     
 	NSArray *timeLayouts = [dataElement elementsForName:@"time-layout"];
 	if ([timeLayouts count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	DDXMLElement *timeLayout = [timeLayouts objectAtIndex:0];
@@ -96,7 +96,7 @@
 	// Read time layout key
 	NSArray *elements = [timeLayout elementsForName:@"layout-key"];
 	if ([elements count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	
@@ -134,7 +134,7 @@
     
 	NSArray *temperatures = [parametersElement elementsForName:@"temperature"];
 	if ([temperatures count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	DDXMLElement *temperature = [temperatures objectAtIndex:0];
@@ -161,7 +161,7 @@
 	
 	NSArray *elements = [temperatureElement elementsForName:@"value"];
 	if ([elements count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	
@@ -183,7 +183,7 @@
     
 	NSArray *humidities = [parametersElement elementsForName:@"humidity"];
 	if ([humidities count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	DDXMLElement *humidity = [humidities objectAtIndex:0];
@@ -191,7 +191,7 @@
 	// Read time layout key
 	NSArray *elements = [humidity elementsForName:@"value"];
 	if ([elements count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	
@@ -224,7 +224,7 @@
 
 	NSArray *elements = [valuesElement elementsForName:@"value"];
 	if ([elements count] == 0){
-		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA time data"];
+		[self bubbleUpError:@"HourlyForecastDataModelErrorDomain" code:3 errorString:@"Unable to extract NOAA hourly data"];
 		return;
 	}
 	

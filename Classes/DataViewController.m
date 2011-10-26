@@ -189,8 +189,9 @@ static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
 			switch (indexPath.row){
 				case 0:
 					cell.textLabel.text = @"Count";
-					NSNumber *count = [dataModel valueForKeyPath:@"hourlyForecastDataModel.hourlyForecast.@count"];
-					cell.detailTextLabel.text = [count stringValue];
+					//NSNumber *count = [dataModel valueForKeyPath:@"hourlyForecastDataModel.hourlyForecast.@count"];
+					//cell.detailTextLabel.text = [count stringValue];
+                    cell.detailTextLabel.text = @"0";
 					return cell;
 				case 1:
 					cell.textLabel.text = @"Elapsed";

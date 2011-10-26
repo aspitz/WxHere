@@ -30,11 +30,6 @@
 @class HourlyForecastDataModel;
 
 @interface WxDataModel : BasicDataModel {
-	GPSDataModel *gpsDataModel;
-	LocationDataModel *locationDataModel;
-	CurrentConditionsDataModel *currentConditionsDataModel;
-	NOAADataModel *noaaDataModel;
-	HourlyForecastDataModel *hourlyForecastDataModel;
 	int done;
 }
 

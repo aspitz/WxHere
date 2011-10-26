@@ -26,8 +26,6 @@
 @class DDXMLElement;
 
 @interface HourlyForecastDataModel : NetDataModel {
-	NSMutableArray *hourlyForecast;
-
 	NSDateFormatter *dateFormatter;
 }
 
