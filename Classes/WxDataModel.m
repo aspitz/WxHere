@@ -33,7 +33,7 @@
 @synthesize locationDataModel;
 @synthesize currentConditionsDataModel;
 @synthesize noaaDataModel;
-@synthesize hourlyForecastDataModel;
+//@synthesize hourlyForecastDataModel;
 
 #pragma mark Singelton
 
@@ -58,7 +58,7 @@ static WxDataModel *wxDataModel = nil;
 		locationDataModel = [[LocationDataModel alloc]init];
 		currentConditionsDataModel = [[CurrentConditionsDataModel alloc]init];
 		noaaDataModel = [[NOAADataModel alloc]init];
-		hourlyForecastDataModel = [[HourlyForecastDataModel alloc]init];
+		//hourlyForecastDataModel = [[HourlyForecastDataModel alloc]init];
 		
 		done = 0;
 		
@@ -72,7 +72,7 @@ static WxDataModel *wxDataModel = nil;
 	[locationDataModel release];
 	[currentConditionsDataModel release];
 	[noaaDataModel release];
-	[hourlyForecastDataModel release];
+	//[hourlyForecastDataModel release];
 	
 	[super dealloc];
 }
@@ -95,7 +95,7 @@ static WxDataModel *wxDataModel = nil;
 	[self.locationDataModel addObserver:self forKeyPath:@"state" options:0 context:NULL];
 	[self.currentConditionsDataModel addObserver:self forKeyPath:@"state" options:0 context:NULL];
 	[self.noaaDataModel addObserver:self forKeyPath:@"state" options:0 context:NULL];
-	[self.hourlyForecastDataModel addObserver:self forKeyPath:@"state" options:0 context:NULL];
+	//[self.hourlyForecastDataModel addObserver:self forKeyPath:@"state" options:0 context:NULL];
 }
 
 - (void)handleErrorNotification:(NSNotification *)notification{
@@ -157,7 +157,7 @@ static WxDataModel *wxDataModel = nil;
 	[locationDataModel refresh];
 	[currentConditionsDataModel refresh];
 	[noaaDataModel refresh];
-	[hourlyForecastDataModel refresh];
+	//[hourlyForecastDataModel refresh];
 	
 	[self update:nil];
 }

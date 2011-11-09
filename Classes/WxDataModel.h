@@ -37,7 +37,7 @@
 @property (retain) LocationDataModel *locationDataModel;
 @property (retain) CurrentConditionsDataModel *currentConditionsDataModel;
 @property (retain) NOAADataModel *noaaDataModel;
-@property (retain) HourlyForecastDataModel *hourlyForecastDataModel;
+//@property (retain) HourlyForecastDataModel *hourlyForecastDataModel;
 
 + (WxDataModel *)dataModel;
 

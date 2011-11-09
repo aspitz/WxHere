@@ -26,13 +26,13 @@
 
 @implementation DataViewController
 
-static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
+static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, /*2,*/ 1};
 
 - (id)initWithCoder:(NSCoder *)decoder{
 	self = [super initWithCoder:decoder];
 	if (self != nil){
 		sectionHeaders = [[NSArray alloc]initWithObjects:@"GPS", @"Location", @"Current Condition",
-						  @"Daily Forecasts", @"Hourly Forecasts", @"Overall", nil];
+						  @"Daily Forecasts", /*@"Hourly Forecasts",*/ @"Overall", nil];
 	}
 	return self;
 }
@@ -78,7 +78,7 @@ static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
 #pragma mark -
 #pragma mark UITableViewDelegate Protocol implementation
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{ return 6; }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{ return 5/*6*/; }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	if (section < 6){
@@ -185,7 +185,7 @@ static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
 					return cell;
 			}
 			break;
-		case 4:
+		/*case 4:
 			switch (indexPath.row){
 				case 0:
 					cell.textLabel.text = @"Count";
@@ -195,12 +195,14 @@ static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
 					return cell;
 				case 1:
 					cell.textLabel.text = @"Elapsed";
-					NSNumber *elapsedTime = [dataModel valueForKeyPath:@"hourlyForecastDataModel.elapsedTime"];
-					cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%.2f sec",[elapsedTime doubleValue]];
+					//NSNumber *elapsedTime = [dataModel valueForKeyPath:@"hourlyForecastDataModel.elapsedTime"];
+					//cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%.2f sec",[elapsedTime doubleValue]];
+                    cell.detailTextLabel.text = @"0.00 sec";
+                    
 					return cell;
 			}
-			break;
-		case 5:
+			break;*/
+		case 4:
 			switch (indexPath.row){
 				case 0:
 					cell.textLabel.text = @"Elapsed";
@@ -218,7 +220,7 @@ static const NSUInteger sectionRowArray[] = { 4, 3, 5, 2, 2, 1};
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	if ((section >= 0) && (section <= 5)){ 
+	if ((section >= 0) && (section <= 4)){ 
 		return [sectionHeaders objectAtIndex:section];
 	} else {
 		return @"oops";

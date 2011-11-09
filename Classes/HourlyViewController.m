@@ -22,7 +22,7 @@
 - (id)initWithCoder:(NSCoder *)decoder{
 	self = [super initWithCoder:decoder];
 	if (self != nil){
-		hourlyForecastDataModel = [WxDataModel dataModel].hourlyForecastDataModel;
+		//hourlyForecastDataModel = [WxDataModel dataModel].hourlyForecastDataModel;
 	}
 	return self;
 }
