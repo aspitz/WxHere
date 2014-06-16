@@ -265,7 +265,7 @@
 		day = period.dateComponents.day;
 		
 		conditionIcon = [condition stringValue];
-        if ( !([conditionIcon hasPrefix:@"http://"] && [conditionIcon hasSuffix:@".jpg"]) ){
+        if ( !([conditionIcon hasPrefix:@"http://"] && [conditionIcon hasSuffix:@".png"]) ){
 			[self bubbleUpError:@"NOAADataModelErrorDomain" code:5 errorString:@"Unable to extract daily conditions"];
 			return;
 		}

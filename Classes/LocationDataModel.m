@@ -45,7 +45,7 @@
 	[super update:dataModel];
 	GPSDataModel *gpsDataModel = dataModel;
 	
-	NSString *urlString = [[NSString alloc] initWithFormat:@"http://ws.geonames.org/findNearbyPostalCodes?lat=%f&lng=%f",
+	NSString *urlString = [[NSString alloc] initWithFormat:@"http://api.geonames.org/findNearbyPostalCodes?lat=%f&lng=%f&username=aspitz",
 						   gpsDataModel.location.coordinate.latitude,
 						   gpsDataModel.location.coordinate.longitude];
 	DLog(@"%@", urlString);
